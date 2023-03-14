@@ -1,0 +1,7 @@
+{
+  "name": "hrappv2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
