@@ -1,7 +1,7 @@
 {
   "name": "hrappv2",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Wani Nz",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "@capacitor/android": "4.7.0",
     "@capacitor/app": "4.1.1",
     "@capacitor/core": "4.7.0",
     "@capacitor/haptics": "4.1.0",
