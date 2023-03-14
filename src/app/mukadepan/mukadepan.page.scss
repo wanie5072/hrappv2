@@ -1,0 +1,64 @@
+.container {
+    position: relative;
+    left: 0;
+    bottom: 10vh;
+    right: 0;
+    top: 2vh;
+    @media screen and (max-width:1200px) and (min-width: 450px) {
+        background: white;
+    }
+}
+
+ion-toolbar {
+    --min-height: 50px;
+    color: #2C9DDE;
+  }
+
+ ion-button {
+      --border-radius: 30px;
+  }
+
+  .smalllogo {
+    -webkit-animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate-reverse both;
+    animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate-reverse both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  ion-content {
+    --background: none;
+    background-image: url('/assets/images/hr_bg.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+#realTime {
+  margin-bottom: 0px;
+}
+
+ion-datetime {
+  padding-top: 0%;
+}
+
+.location {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-icon {
+  font-size: 35px;
+  color: #2C9DDE;
+}
+
+ion-grid {
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: auto;
+}
+
+.rowBawah {
+  font-size: 10px;
+}

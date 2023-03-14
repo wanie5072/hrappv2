@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>List of Attendees</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+     </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item color='secondary'>
+      <ion-grid>
+        <ion-row>
+          <ion-col>Name:</ion-col>
+          <ion-col>Time & Date:</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-grid>
+        <ion-row *ngFor="let a of displayUserData2" ><ion-col>{{a.staff_name}}</ion-col><ion-col>{{a.checkin | date:'EEEE, h:mm a, dd/MM/yyyy '}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  <!-- <div class="bawah">
+    <ion-button (click)="goBack()" expand="block" color="secondary" style="width: fit-content; margin: auto;" >Back to Homepage</ion-button>
+  </div> -->
+  
+</ion-content>

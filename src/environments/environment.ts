@@ -3,7 +3,22 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  //LOGIN (HTTP POST) :
+//URL: http://consurv.no-ip.biz/leave/logintest
+//Expected variable : username, password, gsm
+//On successful will return : JSON(userdata)
+apiUrl1: 'http://consurv.no-ip.biz/leave/',
+
+//checkin-checkout
+apiUrl2: 'http://consurv.no-ip.biz:3000/api/dailycheck',
+
+//login
+apiUrl3: 'http://consurv.no-ip.biz:3000/api/',
+
+
+
 };
 
 /*

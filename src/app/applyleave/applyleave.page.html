@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color='light'>
+    <ion-title>Apply Leave</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-card>
+    <ion-card-content style="overflow: scroll;">
+      <form [formGroup]="myform" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label>Type of leave:</ion-label>
+            <ion-select class= "myCustomSelect" required slot="end" [(ngModel)]='leaveType'>
+              <ion-select-option *ngFor="let item of leaveTypeChoices" [value]="item.typeid">{{item.leavetype}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+      
+        <ion-item lines="none">
+          <ion-label>Reason:</ion-label>
+            <ion-input required type="text" type="text" [(ngModel)]='reason'> </ion-input>
+        </ion-item>
+      
+        <ion-list>
+          <ion-item-divider></ion-item-divider>
+          <ion-item color="secondary" lines="none">
+            <ion-label>Start Date</ion-label>
+            <ion-datetime [(ngModel)]="currentDate" color="light" placeholder="Select Date"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label>Duration</ion-label>
+                  <ion-select slot="end" [(ngModel)]='halfday1'>
+                    <ion-select-option value="1">Full day</ion-select-option>
+                    <ion-select-option value="2">Morning Only</ion-select-option>
+                    <ion-select-option value="3">Evening Only</ion-select-option>
+              </ion-select>
+          </ion-item>
+          <ion-item color="secondary" lines="none">
+            <ion-label>Ends</ion-label>
+            <ion-datetime [(ngModel)]="endDate" placeholder="Select Date"></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label>Duration</ion-label>
+                  <ion-select slot="end" [(ngModel)]='halfday2'>
+                    <ion-select-option value="1">Full day</ion-select-option>
+                    <ion-select-option value="2">Morning Only</ion-select-option>
+                    <ion-select-option value="3">Evening Only</ion-select-option>
+              </ion-select>
+          </ion-item>
+        </ion-list>
+      </form>
+     
+    </ion-card-content>
+</ion-card>
+
+<ion-item style="overflow: scroll;" lines="none">
+  <div class="applyButton">
+    <ion-button (ionClear)="ionClear($event)" type="ngSubmit" (click)="showAlert()" (click)="applyCuti()" class="apply-button" color="secondary">Apply Leave</ion-button>
+  </div>
+</ion-item>
+
+<div lines="none" class="cuti">
+  <ion-card color='light'>
+    <ion-card-header>Leave Balance for Year <ion-datetime [value]="dateTime" displayFormat="YYYY" ></ion-datetime>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- <ion-card-subtitle color="primary-contrast">Leave Balance for year 2021:</ion-card-subtitle> -->
+      <ion-card-title color="primary-contrast" style="font-size:70px" >
+        {{leaveBalance.data?.AL}}
+      </ion-card-title>
+      <ion-card-subtitle color="primary-contrast" style="font-size:20px">Days</ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+</ion-content>

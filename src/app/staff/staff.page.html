@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Staff Database</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-left">
+    Staff Database
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+<!--
+  <div class="ion-padding" (ionChange)="segmentChanged($event)">
+    <ion-segment mode="ios" [value]="segmentValue">
+      <ion-segment-button value="1">
+        <ion-label>Staff</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Intern</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="scroll($event)" #myContent>
+
+  <ion-list lines="none">
+    <ion-item color="light">
+      <ion-label class="heading">List of Registered{{segmentValue === '1' ? ' Manager' : ' Staff'}}</ion-label>
+       <ion-button slot="end" fill="clear" size="small">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item class="ion-padding-vertical popItem" 
+        *ngFor="let item of (segmentValue === '1') ? requests : donors">
+        <ion-thumbnail slot="start">
+          <div class="ion-text-center" *ngIf="segmentValue === '1'">
+            <ion-text color="white">MANAGER</ion-text>
+          </div>
+          <p class="ion-text-center" [style.margin]="segmentValue === '1' ? '10px 0' : '20px 0'">
+            <ion-text color="white">{{item?.company}}</ion-text>
+          </p>
+        </ion-thumbnail>
+        <ion-label>
+          <ion-note color="dark"><b>{{item?.name}}</b></ion-note>
+          <p class="ion-text-wrap">{{item?.position}}</p>
+          <p>
+            <ion-text color="dark">{{item?.age}}</ion-text>
+            <ion-text color="dark"><span>&#9679;</span>{{item?.gender}}</ion-text>
+             <ion-text color="dark"><span>&#9679;</span>{{item?.distance === 1 ? item?.distance + 'km' : item?.distance + 'kms'}}</ion-text>
+          </p>
+        </ion-label>
+        <ion-fab vertical="top" horizontal="end">
+          <ion-fab-button size="small" color="white">
+            <img [src]="item?.photo"/>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  
+</ion-content> -->

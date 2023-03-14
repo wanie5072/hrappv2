@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Leave Approval</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-list *ngFor="let leave of leaveDetail" >
+  <div class="cuti">
+    <ion-card mode="ios">
+      <ion-card-header></ion-card-header>
+      <ion-card-content style="overflow: scroll;">
+        <ion-card-title color="primary-contrast" style="font-size:20px; text-transform: uppercase;">
+          {{leave.leavetype}}
+        </ion-card-title>
+        <ion-card-subtitle style="text-transform:none" color="primary-contrast">{{leave.reason}}</ion-card-subtitle>
+        <ion-card-subtitle color="primary-contrast" style="font-size:15px"> Total of Days: {{leave.leaveday}}</ion-card-subtitle>
+        <a>From: {{leave.datefrom}}</a> <br> <a>To: {{leave.dateend}}</a>
+        <ion-button color="warning" expand="block" class="main-button" *ngIf = "leave.approved === 0; else approved" >PENDING</ion-button>
+        <ng-template #approved>
+          <ion-button color="success" expand="block" class="main-button">APPROVED</ion-button>
+        </ng-template>
+      </ion-card-content>
+    </ion-card>
+</div> 
+</ion-list> -->
+<ion-list> 
+<ion-item class="item-text-wrap" *ngFor="let item of pendingList">
+  <ion-label (click)='openModal(item)'>
+    <h2 style="font-weight: bold;">{{item.reason}}</h2>
+    <p>{{item.staff_name}}<p>
+    <p>{{item.datefrom}} - {{item.dateend}}<p>
+    <p style="font-weight: bold;">{{item.leaveday}} days<p>
+  </ion-label>
+  <ion-checkbox (ionChange)="checkboxClick($event)" checked></ion-checkbox>
+  <!-- <ion-toggle [disabled]='false' [checked]="toggleValue" (ionChange)="presentAlert()" style='zoom:0.8;' (click)="approveLeave()" color="secondary" ></ion-toggle> -->
+  <!-- <ion-icon name="chevron-forward-outline" slot="end"></ion-icon> -->
+</ion-item>
+<div class="ion-text-right">
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button (ionChange)="checkboxClick($event)" type="submit" shape="round" size="large">Submit</ion-fab-button>
+  </ion-fab>
+</div>
+</ion-list>
+</ion-content>

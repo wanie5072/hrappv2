@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Create new account</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input [(ngModel)]="name" type="text" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Position</ion-label>
+    <ion-input [(ngModel)]="position" type="text" required></ion-input>
+  </ion-item>
+
+  <ion-item >
+    <ion-label position="floating">Email</ion-label>
+    <ion-input [(ngModel)]="email" type="text" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input [(ngModel)]="password" type="text" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Confirm Password</ion-label>
+    <ion-input [(ngModel)]="confirm_password" type="text" required></ion-input>
+  </ion-item>
+
+  <ion-item >
+    <ion-label position="floating">Phone Number</ion-label>
+    <ion-input type="text" placeholder="Enter number"
+        [(ngModel)]="userCount" 
+        name="userCount" 
+        (keypress)="numberOnlyValidation($event)"></ion-input>
+  </ion-item>
+
+  <ion-button class="ion-margin-top" type="submit" expand="block" color="light" (click)="onSubmit()">
+    Create Account
+  </ion-button>
+
+
+</ion-content>

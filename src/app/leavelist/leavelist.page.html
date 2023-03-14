@@ -1,0 +1,105 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Leave List</ion-title>
+    <ion-buttons *ngIf="showBtn" slot="end" (click)="goToLeaveHistory()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="clipboard-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-segment [(ngModel)]="selectTabs" mode="md">
+
+    <ion-segment-button value="pending">
+      <ion-icon name="hourglass-outline"></ion-icon>
+        <ion-label>Pending</ion-label>
+    </ion-segment-button>
+    
+    <ion-segment-button value="approved">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+        <ion-label>Approved</ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <div *ngIf="selectTabs == 'pending'" >
+    <ion-list>
+      <ion-item color='secondary'>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Name:</ion-col>
+            <ion-col>Type:</ion-col>
+            <ion-col>Date:</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item *ngIf="pendingList.length==0">
+        No pending leave found
+      </ion-item>
+      <ion-item *ngFor="let item of pendingList.sort(sortFunc)">
+        <ion-grid>
+          <ion-row (click)='openModal(item)'>
+            <ion-col>
+              {{item.staff_name}}
+            </ion-col>
+            <ion-col>
+              {{item.leavetype}}
+            </ion-col>
+            <ion-col>
+              <span *ngIf="item.datehalf=='0000-00-00'">
+              {{item.datefrom}}-{{item.dateend}}
+              </span>
+              <span *ngIf="item.datehalf!='0000-00-00'">
+              {{item.datehalf}}
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-col>
+            
+          </ion-col>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="selectTabs == 'approved'">
+    <ion-list>
+      <ion-item color='secondary'>
+        <ion-grid>
+          <ion-row>
+            <ion-col>Name:</ion-col>
+            <ion-col>Type:</ion-col>
+            <ion-col>Date:</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item *ngIf="approvedList.length==0">
+        No approved leave found
+      </ion-item>
+      <ion-item *ngFor="let item of approvedList">
+        <ion-grid>
+          <ion-row (click)='openModalApprove(item)'>
+            <ion-col>
+              {{item.staff_name}}
+            </ion-col>
+            <ion-col>
+              {{item.leavetype}}
+            </ion-col>
+            <ion-col>
+              <span *ngIf="item.datehalf=='0000-00-00'">
+              {{item.datefrom}}-{{item.dateend}}
+              </span>
+              <span *ngIf="item.datehalf!='0000-00-00'">
+              {{item.datehalf}}
+              </span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

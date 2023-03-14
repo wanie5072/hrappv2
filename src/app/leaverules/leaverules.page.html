@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-left">
+    LEAVE RULES
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item color="light">
+      <ion-label class="heading">Set rules for each roles</ion-label>
+      <!-- <ion-button slot="end" fill="clear" size="small">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button> -->
+    </ion-item>
+    
+    <ion-item-group>
+      <ion-item class="ion-padding-vertical popItem" 
+        *ngFor="let item of (segmentValue == '1') ? requests : donors">
+        <ion-label slot="start">
+          <ion-note color="dark"><b>{{item?.name}}</b></ion-note>
+          <p class="ion-text-wrap">{{item?.position}}</p>
+          
+        </ion-label>
+        <ion-fab vertical="top" horizontal="end">
+          <ion-fab-button size="small" color="white">
+            <img [src]="item?.photo"/>
+          </ion-fab-button>
+        </ion-fab>
+        <ion-list>
+          <ion-item>
+            <ion-button color="warning"><ion-label>Rules</ion-label>
+              <ion-select>
+                <ion-select-option value="1">1</ion-select-option>
+                <ion-select-option value="2">2</ion-select-option>
+          </ion-select></ion-button>
+        </ion-item>
+        </ion-list>
+          
+    
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

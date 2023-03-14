@@ -1,0 +1,114 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end" (click)="GotoNotityPage()">
+      <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+      <!-- <ion-badge color="danger" style="position: absolute; right: -5px; top: -3px;">?</ion-badge> -->
+    </ion-buttons>
+
+        <!-- <span>&nbsp;</span> -->
+
+      <ion-buttons slot="end">
+        <ion-button (click)="settingsPopover()">
+          <ion-icon slot="icon-only" ios="ellipsis-vertical" md="ellipsis-vertical"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="container">
+    <ion-text color="primary" style="margin-top: 10px;">
+      <h1 style="text-align:center">DynaConsurv</h1>
+    </ion-text>
+    <h2 style="text-align:center">Welcome Back, {{displayUserData?.staff_name}}!</h2>
+    <p id="realTime" style="text-align:center; font-family: 'Georama'!important; font-size:2.1em;" size="big">{{ today | date: "HH:mm a" }}</p>
+    <ion-datetime disabled="disabled" style="text-align:center; font-family: 'Georama'!important; font-size:1.8em;" size="medium" display-format= "DDDD" [(ngModel)]="today" (ionChange)="startTime()"></ion-datetime>
+    <img (click)="addEvent()" expand="block" style="text-align:center;" src="{{myimage}}" height="150 px" width="150 px" class="smalllogo" />
+    <ion-item color="light" class="location">
+      <ion-label>Location:</ion-label>
+      <ion-select [(ngModel)]="location" interface="popover">
+        <ion-select-option value="WFH">WFH</ion-select-option>
+        <ion-select-option value="Office">OFFICE</ion-select-option>
+        <ion-select-option value="Site">SITE</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <p><ion-button (click)="goToList()" expand="full" color="dark" style="width: fit-content; margin: auto;">List of Attendees</ion-button></p>
+    <ion-grid >
+      <ion-row style="text-align:center" *ngFor="let a of displayUserData2">
+        <ion-col>
+          <ion-icon name="enter-outline"></ion-icon>
+          <p style="font-weight: bolder; color: mediumblue;">{{a.checkin | date:'h:mm a'}}</p>
+          <p class="rowBawah">Clock In</p>
+        </ion-col>
+        <ion-col *ngIf = "a.checkout === 'showToast2()'; else noDisplay">
+          <ion-icon name="log-out-outline"></ion-icon>
+          <p style="font-weight: bolder; color: mediumblue;">{{a.checkout | date:'h:mm a'}}</p>
+          <p class="rowBawah">Clock Out</p>
+        </ion-col>
+        <ng-template #noDisplay>
+          <ion-col>
+            <ion-icon name="log-out-outline"></ion-icon>
+            <p style="font-weight: bolder;">-</p>
+            <p class="rowBawah">Clock Out</p>
+          </ion-col>
+        </ng-template>
+        <ion-col>
+          <ion-icon name="location-outline"></ion-icon>
+          <p style="font-weight: bolder; color: mediumblue;">{{ a.location }}</p>
+          <p class="rowBawah" >Location</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p style="text-align:center; color: brown;">Check Out Time: before 6.30PM</p>
+  </div>
+</ion-content>
+
+
+<!-- <ion-content style="overflow: scroll;">
+  <div class="container">
+    <ion-text color="primary" style="margin-top: 10px;">
+      <h1 style="text-align:center">DynaConsurv</h1>
+    </ion-text>
+   
+    <h2 style="text-align:center">Welcome Back, {{displayUserData?.staff_name}}!</h2>
+    <img src="assets/images/home1.png"  class="smalllogo"/>
+    <p><ion-button (click)="goToList()" expand="full" color="dark" style="width: fit-content; margin: auto;">List of Attendees</ion-button></p>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-button (click)="showToast1()" expand="block" (click)="checkInAction()" color="secondary">Check In</ion-button>
+        </ion-col>
+        <ion-col col-6>
+          <ion-button (click)="showToast2()" expand="block" (click)="checkOutAction()"color="secondary">Check Out</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-text color="dark">
+      <p style="text-align:center">STATUS:</p>
+    </ion-text>
+    <ion-text color="success">
+      <h1 style="text-align:center" id="status">None</h1>
+    </ion-text>
+      
+
+      <ion-list>
+        <ion-item *ngFor="let tran of transactions">      
+          <p *ngIf=" a.checkInAction == 'showToast1'" > You have redeemed  {{a.checkin | date:'EEEE, h:mm a, dd/MM/yyyy '}} points.  </p>
+          <p *ngIf=" a.checkOutAction == 'showToast2'" > You have earned  {{a.checkout | date:'EEEE, h:mm a, dd/MM/yyyy '}}} points.  </p>  
+        </ion-item>
+      </ion-list>
+  
+    <p><ion-button (click)="goToList()" expand="block" color="secondary" style="width: fit-content; margin: auto;">List of Attendees</ion-button></p> -->
+    <!-- <p><ion-button (click)="showToast3()" expand="block" >Leave</ion-button></p> 
+  </div>
+</ion-content> -->

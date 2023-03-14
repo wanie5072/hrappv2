@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Leave History</ion-title>
+    <ion-back-button slot="start"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let leave of leaveDetail.sort(sortFunc)" >
+  <div class="cuti">
+    <ion-card mode="ios">
+      <ion-card-header></ion-card-header>
+      <ion-card-content style="overflow: scroll;">
+        <ion-card-title color="primary-contrast" style="font-size:20px; text-transform: uppercase;">
+          {{leave.leavetype}}
+        </ion-card-title>
+        <ion-card-subtitle style="text-transform:none" color="primary-contrast">{{leave.reason}}</ion-card-subtitle>
+        <ion-card-subtitle color="primary-contrast" style="font-size:15px"> Total of Days: {{leave.leaveday}}</ion-card-subtitle>
+        <a>From: {{leave.datefrom | date:'EEEE, dd/MM/yyyy '}}</a> <br> <a>To: {{leave.dateend | date:'EEEE, dd/MM/yyyy '}}</a>
+        <ion-button color="warning" expand="block" class="main-button" *ngIf = "leave.approved === 0; else approved" >PENDING</ion-button>
+        <ng-template #approved>
+          <ion-button color="success" expand="block" class="main-button">APPROVED</ion-button>
+        </ng-template>
+      </ion-card-content>
+      
+    </ion-card>
+    
+</div>
+
+</ion-list>
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-left">
+    ADMIN DASHBOARD
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/', 'home-hradmin']">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+
+  <app-shrink-header [scrollArea]="myContent" [headerHeight]="80">
+    <ion-grid [style.padding-bottom.px]="120 - newHeight"></ion-grid>
+    <ion-list class="popover" lines="none" 
+      [style.margin-top.px]="-120 - newHeight/2">
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label class="ion-text-wrap">
+              <h1>
+                <b>3</b>
+                <ion-text class="ion-margin-start" color="primary">18%</ion-text>
+              </h1>
+              <p>Manager</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label class="ion-text-wrap ion-text-right">
+              <h1>
+                <ion-text class="ion-margin-end" color="primary">82%</ion-text>
+                <b>25</b>
+              </h1>
+              <p>Staff</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <canvas #lineCanvas></canvas>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </app-shrink-header>
+
+  <div class="ion-padding" (ionChange)="segmentChanged($event)">
+    <ion-segment mode="ios" [value]="segmentValue">
+      <ion-segment-button value="1">
+        <ion-label>Manager</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Staff</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScroll)="scroll($event)" #myContent>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list lines="none">
+    <ion-item color="light">
+      <ion-label class="heading">List of Registered{{segmentValue == '1' ? ' Manager' : ' Staff'}}</ion-label>
+      <!-- <ion-button slot="end" fill="clear" size="small">
+        <ion-icon slot="icon-only" name="options"></ion-icon>
+      </ion-button> -->
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item class="ion-padding-vertical popItem" 
+        *ngFor="let item of (segmentValue == '1') ? requests : donors">
+        <ion-thumbnail slot="start">
+          <div class="ion-text-center" *ngIf="segmentValue == '1'">
+            <ion-text color="white">MANAGER</ion-text>
+          </div>
+          <p class="ion-text-center" [style.margin]="segmentValue == '1' ? '10px 0' : '20px 0'">
+            <ion-text color="white">{{item?.company}}</ion-text>
+          </p>
+        </ion-thumbnail>
+        <ion-label>
+          <ion-note color="dark"><b>{{item?.name}}</b></ion-note>
+          <p class="ion-text-wrap">{{item?.position}}</p>
+          <p>
+            <ion-text color="dark">{{item?.age}}</ion-text>
+            <ion-text color="dark"><span>&#9679;</span>{{item?.gender}}</ion-text>
+            <!-- <ion-text color="dark"><span>&#9679;</span>{{item?.distance == 1 ? item?.distance + 'km' : item?.distance + 'kms'}}</ion-text> -->
+          </p>
+        </ion-label>
+        <ion-fab vertical="top" horizontal="end">
+          <ion-fab-button size="small" color="white">
+            <img [src]="item?.photo"/>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  
+</ion-content>

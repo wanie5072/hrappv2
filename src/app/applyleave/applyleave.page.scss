@@ -1,0 +1,42 @@
+.apply-button{
+    float: right;
+}
+
+.applyButton {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+ion-toolbar {
+    --min-height: 50px;
+    color: #2C9DDE;
+  }
+
+ion-card {
+    color: #2C9DDE;
+    max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+ion-list {
+    overflow: hidden;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .myCustomSelect{
+    max-width: 100% !important;
+   }
+
+  ion-content {
+    --background: none;
+    background-image: url('/assets/images/hr_bg.png');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
